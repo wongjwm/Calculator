@@ -13,6 +13,8 @@
 		131C4CE12023A11300D19A39 /* CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131C4CE02023A11300D19A39 /* CalculatorTests.swift */; };
 		131C4CEC2023A11400D19A39 /* CalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131C4CEB2023A11400D19A39 /* CalculatorUITests.swift */; };
 		8B66B77F2023A6BE00018FE3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66B77E2023A6BE00018FE3 /* ViewController.swift */; };
+		8B66B7812023AA0500018FE3 /* newfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66B7802023AA0500018FE3 /* newfile.swift */; };
+		8B66B7832023AC1D00018FE3 /* newfile2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66B7822023AC1D00018FE3 /* newfile2.swift */; };
 		8B7F0CB32023A5B6004D34E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B7F0CB22023A5B6004D34E9 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +48,8 @@
 		131C4CEB2023A11400D19A39 /* CalculatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorUITests.swift; sourceTree = "<group>"; };
 		131C4CED2023A11400D19A39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B66B77E2023A6BE00018FE3 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8B66B7802023AA0500018FE3 /* newfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newfile.swift; sourceTree = "<group>"; };
+		8B66B7822023AC1D00018FE3 /* newfile2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newfile2.swift; sourceTree = "<group>"; };
 		8B7F0CB22023A5B6004D34E9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -101,8 +105,10 @@
 				131C4CCB2023A11300D19A39 /* AppDelegate.swift */,
 				131C4CD22023A11300D19A39 /* Assets.xcassets */,
 				8B66B77E2023A6BE00018FE3 /* ViewController.swift */,
+				8B66B7822023AC1D00018FE3 /* newfile2.swift */,
 				131C4CD42023A11300D19A39 /* LaunchScreen.storyboard */,
 				131C4CD72023A11300D19A39 /* Info.plist */,
+				8B66B7802023AA0500018FE3 /* newfile.swift */,
 			);
 			path = Calculator;
 			sourceTree = "<group>";
@@ -260,6 +266,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B66B77F2023A6BE00018FE3 /* ViewController.swift in Sources */,
+				8B66B7832023AC1D00018FE3 /* newfile2.swift in Sources */,
+				8B66B7812023AA0500018FE3 /* newfile.swift in Sources */,
 				131C4CCC2023A11300D19A39 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

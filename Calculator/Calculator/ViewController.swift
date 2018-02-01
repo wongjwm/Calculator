@@ -10,6 +10,9 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    // something, hello world
+
+
     // use table instead of labels???
     @IBOutlet var historyLabel: UILabel!
     @IBOutlet var clearButton: UIButton!
