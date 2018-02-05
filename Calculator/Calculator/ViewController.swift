@@ -18,7 +18,6 @@ class ViewController: UIViewController {
     @IBOutlet var clearButton: UIButton!
     @IBOutlet var displayLabel: UILabel!
     var expressionEval = 0.0;
-    var isReset = true
     var history = [String]()
     
     @IBOutlet var tipButton: UIButton!
@@ -46,7 +45,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        displayLabel.text = ""
+        displayLabel.text = "0"
         historyLabel.isHidden = true
         
         let tipImg = UIImage(named: "tip")
@@ -55,30 +54,6 @@ class ViewController: UIViewController {
         tipButton.setImage(tipImg, for: .normal)
         convertButton.setImage(rulerImg, for: .normal)
         currencyButton.setImage(currencyImg, for: .normal)
-        
-        
-        
-        
-//        self.shadowStyle(button: posNegButton)
-//        self.shadowStyle(button: percentButton)
-//        self.shadowStyle(button: divideButton)
-//        self.shadowStyle(button: multiplyButton)
-//        self.shadowStyle(button: subtractButton)
-//        self.shadowStyle(button: addButton)
-//        self.shadowStyle(button: equalButton)
-//        self.shadowStyle(button: decimalButton)
-//        self.shadowStyle(button: zeroButton)
-//        self.shadowStyle(button: oneButton)
-//        self.shadowStyle(button: twoButton)
-//        self.shadowStyle(button: threeButton)
-//        self.shadowStyle(button: fourButton)
-//        self.shadowStyle(button: fiveButton)
-//        self.shadowStyle(button: sixButton)
-//        self.shadowStyle(button: sevenButton)
-//        self.shadowStyle(button: eightButton)
-//        self.shadowStyle(button: nineButton)
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -89,12 +64,9 @@ class ViewController: UIViewController {
     
     @IBAction func numberPressed(_ sender: Any) {
         clearButton.setTitle("c", for: .normal)
-        
-        // THINGS TO FIX
-        //  reset after enter has been pressed
-//        if isReset {
-//            displayLabel.text = ""
-//        }
+        if displayLabel.text == "0" {
+            displayLabel.text = ""
+        }
         
         //  convert ints to doubles so answer is accurate
         
@@ -102,51 +74,62 @@ class ViewController: UIViewController {
     }
     
     @IBAction func actionPressed(_ sender: Any) {
-        // switch statement for all cases
-        
-        // throw an error when two symbols are entered in a row
-
+    
         // if new line, use previous result
         if displayLabel.text?.count == 0 {
             displayLabel.text = historyLabel.text!
         }
         
-        if !(displayLabel.text?.last == ".") {
+        // if two symbols are entered in a row, replace last symbol
+        if (displayLabel.text?.last == "/" || displayLabel.text?.last == "*" || displayLabel.text?.last == "-" || displayLabel.text?.last == "+") {
+            displayLabel.text = String(describing: displayLabel.text?.dropLast())
+        }
+        
+        // if last char is a ".", insert ".0 after it
+        else if displayLabel.text?.last == "." {
             displayLabel.text = displayLabel.text! + "0"
         }
-        
-        
-        
-        if (sender as AnyObject).tag == 12 {
+        self.displayOp(tag: (sender as AnyObject).tag)
+    }
+    
+    // displays the correct operator
+    func displayOp(tag: Int) {
+        // ABSTRACT THIS PLS, looks gross
+        switch tag  {
+        case 12:
             displayLabel.text = displayLabel.text! + String("/")
-        }
-        else if (sender as AnyObject).tag == 13  {
+        case 13:
             displayLabel.text = displayLabel.text! + String("*")
-        }
-        else if (sender as AnyObject).tag == 14  {
+        case 14:
             displayLabel.text = displayLabel.text! + String("-")
-        }
-        else if (sender as AnyObject).tag == 15 {
+        case 15:
             displayLabel.text = displayLabel.text! + String("+")
+        default:
+            displayLabel.text = displayLabel.text!
         }
     }
     
+    
     // Actions for when "=" button is pressed
     @IBAction func enterPressed(_ sender: Any) {
-        if !(displayLabel.text?.last == ".") {
+        if !(displayLabel.text?.last == "." || displayLabel.text?.last == "/" || displayLabel.text?.last == "*" ||
+            displayLabel.text?.last == "-" || displayLabel.text?.last == "+") {
             historyLabel.isHidden = false
             self.evaluateExpression()
-            isReset = true
         }
         
-        // if string ends with an op, cannot compute
-        
         // if string goes over a certain length, must decrease font size
+//        if displayLabel.text?.characters.count > 10 {
+//            displayLabel.font = UIFont(name: "Arial", size: 14)
+//        }
+        
+        // format so whole result is shown (decimals) (ex. if numbers ends with .0, remove .0)
     }
     
     // Actions for when "ac/c" button is pressed
     @IBAction func clear(_ sender: Any) {
-        displayLabel.text = ""
+        displayLabel.text = "0"
+        historyLabel.text = ""
         clearButton.setTitle("ac", for: .normal)
     }
     
@@ -157,51 +140,47 @@ class ViewController: UIViewController {
         }
     }
     
-    // Actions for when "%" button is pressed
+    // Actions for when "%" button is pressed (applied to last inputted number)
     @IBAction func percentPressed(_ sender: Any) {
         self.evaluateExpression()
-        historyLabel.text = "(" + displayLabel.text! + ")%"
+        
+        //get last number, apply % to that number
+        
+        //historyLabel.text = "(" + displayLabel.text! + ")%"
         displayLabel.text = String(expressionEval * 0.01)
     }
     
     // Actions for when "+/-" button is pressed
     @IBAction func flipSignPressed(_ sender: Any) {
         self.evaluateExpression()
-        historyLabel.text = "-(" + displayLabel.text! + ")"
         displayLabel.text = String(expressionEval * -1)
     }
     
     // evaluates the expression
     func evaluateExpression() {
         let expression = NSExpression(format: displayLabel.text!)
-        historyLabel.text = displayLabel.text
         if let result = expression.expressionValue(with: nil, context: nil) as? Double {
+            
+            // if end result ends with .0, show as an int
+            
             displayLabel.text = String(result)
+            historyLabel.text = displayLabel.text
             expressionEval = result
         } else {
             print("failed")
         }
     }
-    
-    // shadow styling for buttons
-    func shadowStyle(button: UIButton) {
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOffset = CGSize(width: 2, height: 2)
-        button.layer.shadowRadius = 2.0;
-        button.layer.shadowOpacity = 0.2;
-        button.layer.cornerRadius = 5
-        button.clipsToBounds = true
-        button.showsTouchWhenHighlighted = true
-    }
-    
+
     @IBAction func tipPressed(_ sender: Any) {
+        // pull up new menu for tip convertion
     }
     
     @IBAction func convertPressed(_ sender: Any) {
+        // pull up new menu for unit convertion
     }
     
-    
     @IBAction func currencyPressed(_ sender: Any) {
+        // pull up new menu for currency convertion
     }
     
     
@@ -216,6 +195,17 @@ class ViewController: UIViewController {
         let result = self.expressionEval * multiplier
     }
     
+    
+    // shadow styling for buttons
+    func shadowStyle(button: UIButton) {
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOffset = CGSize(width: 2, height: 2)
+        button.layer.shadowRadius = 2.0;
+        button.layer.shadowOpacity = 0.2;
+        button.layer.cornerRadius = 5
+        button.clipsToBounds = true
+        button.showsTouchWhenHighlighted = true
+    }
     
 
 }
