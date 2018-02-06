@@ -9,10 +9,10 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    // something, hello world
-
-
+    
+    
+    
+    
     // use table instead of labels???
     @IBOutlet var historyLabel: UILabel!
     @IBOutlet var clearButton: UIButton!
@@ -82,7 +82,9 @@ class ViewController: UIViewController {
         
         // if two symbols are entered in a row, replace last symbol
         if (displayLabel.text?.last == "/" || displayLabel.text?.last == "*" || displayLabel.text?.last == "-" || displayLabel.text?.last == "+") {
-            displayLabel.text = String(describing: displayLabel.text?.dropLast())
+            //displayLabel.text = (displayLabel.text?)! + String(displayLabel.text?.dropLast())
+            //print(displayLabel.text?.dropLast())
+            
         }
         
         // if last char is a ".", insert ".0 after it
