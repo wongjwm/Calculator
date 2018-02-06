@@ -6,19 +6,25 @@
 //  Copyright © 2018 Judy Wong. All rights reserved.
 //
 
+// TO DO
+// add commas to numbers
+// FIX: dropLast() not working like it should?
+// if string goes over certain length, font size should decrease
+// applying percentage to last number in string
+
+
 import UIKit
 
 class ViewController: UIViewController {
     
-    
-    
-    
-    // use table instead of labels???
     @IBOutlet var historyLabel: UILabel!
     @IBOutlet var clearButton: UIButton!
     @IBOutlet var displayLabel: UILabel!
     var expressionEval = 0.0;
     var history = [String]()
+    
+    // used to apply percentage on last number in string
+    var lastNumPressed = 0.0
     
     @IBOutlet var tipButton: UIButton!
     @IBOutlet var convertButton: UIButton!
@@ -46,14 +52,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         displayLabel.text = "0"
-        historyLabel.isHidden = true
-        
-        let tipImg = UIImage(named: "tip")
-        let rulerImg = UIImage(named: "ruler")
-        let currencyImg = UIImage(named: "currency")
-        tipButton.setImage(tipImg, for: .normal)
-        convertButton.setImage(rulerImg, for: .normal)
-        currencyButton.setImage(currencyImg, for: .normal)
+        historyLabel.text = "0"
     }
 
     override func didReceiveMemoryWarning() {
@@ -84,7 +83,6 @@ class ViewController: UIViewController {
         if (displayLabel.text?.last == "/" || displayLabel.text?.last == "*" || displayLabel.text?.last == "-" || displayLabel.text?.last == "+") {
             //displayLabel.text = (displayLabel.text?)! + String(displayLabel.text?.dropLast())
             //print(displayLabel.text?.dropLast())
-            
         }
         
         // if last char is a ".", insert ".0 after it
@@ -94,9 +92,8 @@ class ViewController: UIViewController {
         self.displayOp(tag: (sender as AnyObject).tag)
     }
     
-    // displays the correct operator
+    // Displays the correct operator
     func displayOp(tag: Int) {
-        // ABSTRACT THIS PLS, looks gross
         switch tag  {
         case 12:
             displayLabel.text = displayLabel.text! + String("/")
@@ -120,17 +117,21 @@ class ViewController: UIViewController {
             self.evaluateExpression()
         }
         
-        // if string goes over a certain length, must decrease font size
-//        if displayLabel.text?.characters.count > 10 {
-//            displayLabel.font = UIFont(name: "Arial", size: 14)
+//        // if string goes over a certain length, must decrease font size
+//        if displayLabel.text?.count == 6 {
+//            displayLabel.font = UIFont(name: "Arial Bold", size: 34)
 //        }
         
-        // format so whole result is shown (decimals) (ex. if numbers ends with .0, remove .0)
+        // format answer so whole result is shown (decimals) (ex. if numbers ends with .0, remove .0)
+//        if displayLabel.text?.suffix(2) == ".0" {
+//            displayLabel.text = displayLabel.text!.dropLast(2)
+//        }
+
     }
     
     // Actions for when "ac/c" button is pressed
     @IBAction func clear(_ sender: Any) {
-        displayLabel.text = "0"
+        displayLabel.text = ""
         historyLabel.text = ""
         clearButton.setTitle("ac", for: .normal)
     }
@@ -147,6 +148,10 @@ class ViewController: UIViewController {
         self.evaluateExpression()
         
         //get last number, apply % to that number
+        let percentApplied = lastNumPressed * 0.01
+        
+        
+        //displayLabel.text
         
         //historyLabel.text = "(" + displayLabel.text! + ")%"
         displayLabel.text = String(expressionEval * 0.01)
@@ -163,8 +168,7 @@ class ViewController: UIViewController {
         let expression = NSExpression(format: displayLabel.text!)
         if let result = expression.expressionValue(with: nil, context: nil) as? Double {
             
-            // if end result ends with .0, show as an int
-            
+            //displayLabel.text = String(describing: formatNumWithComma(num: result))  <-- FIX: formatting result w/commas
             displayLabel.text = String(result)
             historyLabel.text = displayLabel.text
             expressionEval = result
@@ -197,6 +201,12 @@ class ViewController: UIViewController {
         let result = self.expressionEval * multiplier
     }
     
+    // Formats a given number with commas
+    func formatNumWithComma(num: Double) {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = NumberFormatter.Style.decimal
+        let formattedNumber = numberFormatter.string(from: NSNumber(value:num))
+    }
     
     // shadow styling for buttons
     func shadowStyle(button: UIButton) {
