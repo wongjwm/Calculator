@@ -9,7 +9,6 @@
 // TO DO
 // add commas to numbers
 // FIX: dropLast() not working like it should?
-// if string goes over certain length, font size should decrease
 // applying percentage to last number in string
 
 
@@ -70,6 +69,7 @@ class ViewController: UIViewController {
         //  convert ints to doubles so answer is accurate
         
         displayLabel.text = displayLabel.text! + String((sender as AnyObject).tag - 1)
+        displayLabel.adjustsFontSizeToFitWidth = true
     }
     
     @IBAction func actionPressed(_ sender: Any) {
@@ -90,6 +90,7 @@ class ViewController: UIViewController {
             displayLabel.text = displayLabel.text! + "0"
         }
         self.displayOp(tag: (sender as AnyObject).tag)
+        displayLabel.adjustsFontSizeToFitWidth = true
     }
     
     // Displays the correct operator
@@ -126,7 +127,8 @@ class ViewController: UIViewController {
 //        if displayLabel.text?.suffix(2) == ".0" {
 //            displayLabel.text = displayLabel.text!.dropLast(2)
 //        }
-
+        displayLabel.adjustsFontSizeToFitWidth = true
+        historyLabel.adjustsFontSizeToFitWidth = true
     }
     
     // Actions for when "ac/c" button is pressed
@@ -207,6 +209,18 @@ class ViewController: UIViewController {
         numberFormatter.numberStyle = NumberFormatter.Style.decimal
         let formattedNumber = numberFormatter.string(from: NSNumber(value:num))
     }
+    
+    // Handles swipe action: switch to different color schemes
+    @IBAction func swipeHandler(_ gestureRecognizer : UISwipeGestureRecognizer) {
+        if gestureRecognizer.state == .ended {
+            // Perform actionz
+            
+            
+            twoButton.backgroundColor = UIColor.red
+            
+        }
+    }
+    
     
     // shadow styling for buttons
     func shadowStyle(button: UIButton) {
