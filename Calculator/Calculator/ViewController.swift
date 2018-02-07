@@ -118,11 +118,6 @@ class ViewController: UIViewController {
             self.evaluateExpression()
         }
         
-//        // if string goes over a certain length, must decrease font size
-//        if displayLabel.text?.count == 6 {
-//            displayLabel.font = UIFont(name: "Arial Bold", size: 34)
-//        }
-        
         // format answer so whole result is shown (decimals) (ex. if numbers ends with .0, remove .0)
 //        if displayLabel.text?.suffix(2) == ".0" {
 //            displayLabel.text = displayLabel.text!.dropLast(2)
@@ -169,11 +164,9 @@ class ViewController: UIViewController {
     func evaluateExpression() {
         let expression = NSExpression(format: displayLabel.text!)
         if let result = expression.expressionValue(with: nil, context: nil) as? Double {
-            
-            //displayLabel.text = String(describing: formatNumWithComma(num: result))  <-- FIX: formatting result w/commas
-            displayLabel.text = String(result)
+            self.formatNumWithComma(num: result)
             historyLabel.text = displayLabel.text
-            expressionEval = result
+            //expressionEval = result
         } else {
             print("failed")
         }
@@ -208,6 +201,7 @@ class ViewController: UIViewController {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = NumberFormatter.Style.decimal
         let formattedNumber = numberFormatter.string(from: NSNumber(value:num))
+        displayLabel.text! = formattedNumber!
     }
     
     // Handles swipe action: switch to different color schemes
