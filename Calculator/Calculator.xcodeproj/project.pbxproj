@@ -14,6 +14,10 @@
 		131C4CEC2023A11400D19A39 /* CalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131C4CEB2023A11400D19A39 /* CalculatorUITests.swift */; };
 		8B66B77F2023A6BE00018FE3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66B77E2023A6BE00018FE3 /* ViewController.swift */; };
 		8B7F0CB32023A5B6004D34E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B7F0CB22023A5B6004D34E9 /* Main.storyboard */; };
+		8B876104202CAC0800B2E6A9 /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B876103202CAC0800B2E6A9 /* Unit.swift */; };
+		8B876106202CB86900B2E6A9 /* ConvertUnitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B876105202CB86900B2E6A9 /* ConvertUnitViewController.swift */; };
+		8B876108202CDB0C00B2E6A9 /* CostCalcViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B876107202CDB0C00B2E6A9 /* CostCalcViewController.swift */; };
+		8B87610A202CDDDE00B2E6A9 /* ConvertCurrViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B876109202CDDDE00B2E6A9 /* ConvertCurrViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +51,10 @@
 		131C4CED2023A11400D19A39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B66B77E2023A6BE00018FE3 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8B7F0CB22023A5B6004D34E9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		8B876103202CAC0800B2E6A9 /* Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
+		8B876105202CB86900B2E6A9 /* ConvertUnitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertUnitViewController.swift; sourceTree = "<group>"; };
+		8B876107202CDB0C00B2E6A9 /* CostCalcViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostCalcViewController.swift; sourceTree = "<group>"; };
+		8B876109202CDDDE00B2E6A9 /* ConvertCurrViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertCurrViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +105,16 @@
 		131C4CCA2023A11300D19A39 /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				8B876103202CAC0800B2E6A9 /* Unit.swift */,
 				8B7F0CB22023A5B6004D34E9 /* Main.storyboard */,
+				8B876107202CDB0C00B2E6A9 /* CostCalcViewController.swift */,
+				8B876105202CB86900B2E6A9 /* ConvertUnitViewController.swift */,
 				131C4CCB2023A11300D19A39 /* AppDelegate.swift */,
 				131C4CD22023A11300D19A39 /* Assets.xcassets */,
 				8B66B77E2023A6BE00018FE3 /* ViewController.swift */,
 				131C4CD42023A11300D19A39 /* LaunchScreen.storyboard */,
 				131C4CD72023A11300D19A39 /* Info.plist */,
+				8B876109202CDDDE00B2E6A9 /* ConvertCurrViewController.swift */,
 			);
 			path = Calculator;
 			sourceTree = "<group>";
@@ -259,7 +271,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B876104202CAC0800B2E6A9 /* Unit.swift in Sources */,
+				8B876108202CDB0C00B2E6A9 /* CostCalcViewController.swift in Sources */,
 				8B66B77F2023A6BE00018FE3 /* ViewController.swift in Sources */,
+				8B876106202CB86900B2E6A9 /* ConvertUnitViewController.swift in Sources */,
+				8B87610A202CDDDE00B2E6A9 /* ConvertCurrViewController.swift in Sources */,
 				131C4CCC2023A11300D19A39 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -419,7 +435,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9RW3RUWW3T;
+				DEVELOPMENT_TEAM = CUSZ86CEX7;
 				INFOPLIST_FILE = Calculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ChesongLee.Calculator;
@@ -434,7 +450,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9RW3RUWW3T;
+				DEVELOPMENT_TEAM = CUSZ86CEX7;
 				INFOPLIST_FILE = Calculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ChesongLee.Calculator;

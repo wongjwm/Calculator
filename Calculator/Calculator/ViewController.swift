@@ -237,7 +237,7 @@ class ViewController: UIViewController {
     @IBAction func swipeHandler(_ gestureRecognizer : UISwipeGestureRecognizer) {
         
         // have an array of color schemes?
-        // new class: colorScheme-- has backgroundcolor, numButtonColor, opButtonColor, 
+        // new class: colorScheme-- has backgroundcolor, numButtonColor, opButtonColor,
         
         if gestureRecognizer.state == .ended {
             
