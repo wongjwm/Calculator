@@ -80,10 +80,11 @@ class ViewController: UIViewController {
         }
         
         // if two symbols are entered in a row, replace last symbol
-        if (displayLabel.text?.last == "/" || displayLabel.text?.last == "*" || displayLabel.text?.last == "-" || displayLabel.text?.last == "+") {
-            //displayLabel.text = (displayLabel.text?)! + String(displayLabel.text?.dropLast())
-            //print(displayLabel.text?.dropLast())
-        }
+//        if (displayLabel.text?.last == "/" || displayLabel.text?.last == "*" || displayLabel.text?.last == "-" || displayLabel.text?.last == "+") {
+//            let temp  = displayLabel.text?.dropLast()
+//            displayLabel.text = String(describing: temp)
+//            print(temp!)
+//        }
         
         // if last char is a ".", insert ".0 after it
         else if displayLabel.text?.last == "." {
@@ -115,6 +116,9 @@ class ViewController: UIViewController {
         if !(displayLabel.text?.last == "." || displayLabel.text?.last == "/" || displayLabel.text?.last == "*" ||
             displayLabel.text?.last == "-" || displayLabel.text?.last == "+") {
             historyLabel.isHidden = false
+            
+            // removes commas for calculation
+            displayLabel.text = displayLabel.text?.replacingOccurrences(of: ",", with: "", options: NSString.CompareOptions.literal, range: nil)
             self.evaluateExpression()
         }
         
@@ -162,6 +166,9 @@ class ViewController: UIViewController {
     
     // evaluates the expression
     func evaluateExpression() {
+        
+        // can't calculate with commas!!!!
+        
         let expression = NSExpression(format: displayLabel.text!)
         if let result = expression.expressionValue(with: nil, context: nil) as? Double {
             self.formatNumWithComma(num: result)
