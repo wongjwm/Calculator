@@ -9,9 +9,18 @@
 import UIKit
 
 class ConvertCurrViewController: UIViewController {
-
+//
+//    let list = Currency.allCases()
+//    @IBOutlet var currPicker: UIPickerView!
+//    @IBOutlet var inputText: UITextField!
+//    @IBOutlet var outputText: UITextField!
+//    @IBOutlet var convertButton: UIButton!
+//
+//
     override func viewDidLoad() {
         super.viewDidLoad()
+        //currPicker.delegate = self as! UIPickerViewDelegate
+        //currPicker.dataSource = self as! UIPickerViewDataSource
 
         // Do any additional setup after loading the view.
     }
@@ -20,6 +29,43 @@ class ConvertCurrViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+//
+//    // Returns num of fields of number picker
+//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+//        return 2
+//    }
+//
+//    //
+//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+//        return list.count
+//    }
+//
+//    //
+//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//        return list[row]
+//    }
+//
+//    @IBAction func convertUnits(_ sender: AnyObject) {
+//
+//        if self.view .isKind(of: ConvertUnitViewController.self) {
+//
+//        }
+//
+//        let fromUnitIdx = currPicker.selectedRow(inComponent: 0)
+//        let toUnitIdx = currPicker.selectedRow(inComponent: 1)
+//        let fromUnit = Currency.fromString(list[fromUnitIdx])!
+//        let toUnit = Currency.fromString(list[toUnitIdx])!
+//        if let input = inputText.text {
+//            if !input.isEmpty {
+//                let inputNum = Double(input)!
+//                let outputNum = fromUnit.convertTo(unit: toUnit, value: inputNum)
+//                outputText.text = String(outputNum)
+//            }
+//        }
+//
+//    }
+    
     
 
     /*

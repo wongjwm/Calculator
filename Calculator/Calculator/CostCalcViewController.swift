@@ -13,6 +13,7 @@ class CostCalcViewController: UIViewController {
     @IBOutlet var totalText: UITextField!
     @IBOutlet var percentText: UITextField!
     @IBOutlet var numPersonText: UITextField!
+    @IBOutlet var finalTotal: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,13 +29,30 @@ class CostCalcViewController: UIViewController {
     
     
     @IBAction func calculateCost(_ sender: Any) {
+        var costNum = 0.0
+        var percentNum = 0.0
+        var numPersonNum = 1
+        
         if let cost = totalText.text {
             if !cost.isEmpty {
-                let costNum = Double(cost)!
-                
+                costNum = Double(cost)!
             }
         }
         
+        if let percent = percentText.text {
+            if !percent.isEmpty {
+                percentNum = Double(percent)! * 0.01
+            }
+        }
+        
+        if let numPerson = numPersonText.text {
+            if !numPerson.isEmpty {
+                numPersonNum = Int(numPerson)!
+            }
+            // add edge case-- can only have integers
+        }
+        // format answer to 2 decimal places
+        finalTotal.text = String(format: "%.02f", (costNum + (costNum * percentNum)) / Double(numPersonNum))
     }
     
 

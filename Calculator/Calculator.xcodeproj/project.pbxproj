@@ -18,6 +18,7 @@
 		8B876106202CB86900B2E6A9 /* ConvertUnitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B876105202CB86900B2E6A9 /* ConvertUnitViewController.swift */; };
 		8B876108202CDB0C00B2E6A9 /* CostCalcViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B876107202CDB0C00B2E6A9 /* CostCalcViewController.swift */; };
 		8B87610A202CDDDE00B2E6A9 /* ConvertCurrViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B876109202CDDDE00B2E6A9 /* ConvertCurrViewController.swift */; };
+		8B87610C202CED5600B2E6A9 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B87610B202CED5600B2E6A9 /* Currency.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		8B876105202CB86900B2E6A9 /* ConvertUnitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertUnitViewController.swift; sourceTree = "<group>"; };
 		8B876107202CDB0C00B2E6A9 /* CostCalcViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostCalcViewController.swift; sourceTree = "<group>"; };
 		8B876109202CDDDE00B2E6A9 /* ConvertCurrViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertCurrViewController.swift; sourceTree = "<group>"; };
+		8B87610B202CED5600B2E6A9 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				131C4CD42023A11300D19A39 /* LaunchScreen.storyboard */,
 				131C4CD72023A11300D19A39 /* Info.plist */,
 				8B876109202CDDDE00B2E6A9 /* ConvertCurrViewController.swift */,
+				8B87610B202CED5600B2E6A9 /* Currency.swift */,
 			);
 			path = Calculator;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				8B66B77F2023A6BE00018FE3 /* ViewController.swift in Sources */,
 				8B876106202CB86900B2E6A9 /* ConvertUnitViewController.swift in Sources */,
 				8B87610A202CDDDE00B2E6A9 /* ConvertCurrViewController.swift in Sources */,
+				8B87610C202CED5600B2E6A9 /* Currency.swift in Sources */,
 				131C4CCC2023A11300D19A39 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

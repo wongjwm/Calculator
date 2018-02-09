@@ -46,6 +46,11 @@ class ConvertUnitViewController: UIViewController, UIPickerViewDelegate, UIPicke
     }
     
     @IBAction func convertUnits(_ sender: AnyObject) {
+        
+        if self.view .isKind(of: ConvertUnitViewController.self) {
+            
+        }
+        
         let fromUnitIdx = unitPicker.selectedRow(inComponent: 0)
         let toUnitIdx = unitPicker.selectedRow(inComponent: 1)
         let fromUnit = Unit.fromString(list[fromUnitIdx])!

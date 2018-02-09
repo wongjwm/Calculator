@@ -23,6 +23,9 @@ class ViewController: UIViewController {
     
     // used to apply percentage on last number in string
     var lastNumPressed = 0.0
+    var indexOfLastOp = 0
+    
+    // FIX ANSWER: not accurate
     
     @IBOutlet var tipButton: UIButton!
     @IBOutlet var convertButton: UIButton!
@@ -49,6 +52,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        equalButton.backgroundColor = UIColor.black
         self.shadowStyle(button: clearButton)
         self.shadowStyle(button: posNegButton)
         self.shadowStyle(button: percentButton)
@@ -188,6 +192,14 @@ class ViewController: UIViewController {
     
     // evaluates the expression
     func evaluateExpression() {
+        
+        // add ".0" so rounding doesn't occur
+//        for (index, element) in displayLabel.text!.enumerated() {
+//            if displayLabel.text![index] == "2" {
+//
+//            }
+//        }
+        
         let expression = NSExpression(format: displayLabel.text!)
         if let result = expression.expressionValue(with: nil, context: nil) as? Double {
             self.formatNumWithComma(num: result)
@@ -207,8 +219,6 @@ class ViewController: UIViewController {
     }
     
     
-    
-
     @IBAction func tipPressed(_ sender: Any) {
         // pull up new menu for tip convertion
     }
@@ -221,18 +231,6 @@ class ViewController: UIViewController {
         // pull up new menu for currency convertion
     }
     
-    
-    // calculate total (tip or sales tax) based on % given and number of persons (optional)
-    func calculateTip(percentage: Double,  numPersons: Int) {
-        let persons = Double(numPersons)
-        let result = ((self.expressionEval * percentage) + self.expressionEval) / persons
-    }
-    
-    //calculate conversion
-    func calculateConversion(multiplier: Double) {
-        let result = self.expressionEval * multiplier
-    }
-    
     // Handles swipe action: switch to different color schemes
     @IBAction func swipeHandler(_ gestureRecognizer : UISwipeGestureRecognizer) {
         
@@ -241,9 +239,6 @@ class ViewController: UIViewController {
         
         if gestureRecognizer.state == .ended {
             
-            
-            // Perform actionz
-            
             // Color Scheme 1
 //            self.view.backgroundColor = UIColor(red:1.00, green:0.87, blue:0.86, alpha:1.0)
 //            let numColor = UIColor(red:0.83, green:0.75, blue:0.84, alpha:1.0)
@@ -251,9 +246,8 @@ class ViewController: UIViewController {
 //            let otherColor = UIColor(red:0.57, green:0.13, blue:0.36, alpha:1.0)
         
             // Color Scheme 2
-            self.view.backgroundColor = UIColor(red:0.05, green:0.09, blue:0.07, alpha:1.0)
             let numColor = UIColor(red:0.87, green:0.67, blue:0.56, alpha:1.0)
-            let opColor = UIColor(red:0.04, green:0.39, blue:0.37, alpha:1.0)
+            let opColor = UIColor(red:0.11, green:0.13, blue:0.31, alpha:1.0)
             let otherColor = UIColor(red:0.76, green:0.88, blue:0.86, alpha:1.0)
             
             zeroButton.backgroundColor = numColor
@@ -277,8 +271,6 @@ class ViewController: UIViewController {
             subtractButton.backgroundColor = opColor
             addButton.backgroundColor = opColor
             equalButton.backgroundColor = UIColor.black
-            
-            
         }
     }
     
@@ -292,7 +284,4 @@ class ViewController: UIViewController {
         button.clipsToBounds = true
         button.showsTouchWhenHighlighted = true
     }
-    
-
 }
-
